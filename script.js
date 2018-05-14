@@ -367,9 +367,9 @@ function moveTouch(EO) {
     EO.preventDefault();
     if (event.targetTouches.length == 1) {
         var touch = event.targetTouches[0];
-        var shiftX = Math.round(touch.pageX - bat.offsetLeft);
-        bat.style.left = Math.round(touch.pageX - shiftX) + "px";
-        }
+        // var shiftX = Math.round(touch.pageX - bat.offsetLeft);
+        bat.style.left = Math.round(touch.pageX) + "px";
+    }
 }
 
 field.addEventListener('touchmove', moveTouch, false);
