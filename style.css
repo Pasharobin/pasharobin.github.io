@@ -22,25 +22,6 @@ body {
     overflow: hidden;
 }
 
-@media screen and (max-width: 479px) {
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        font-size: 20px;
-    }
-
-    #field {
-        width: 100%;
-        height: 100%;
-    }
-
-    .bonus {
-        font-size: 14px;
-    }
-  }
-
 #ball {
     position: absolute;
     width: 24px;
@@ -70,7 +51,7 @@ body {
 }
 
 .bonus {
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
     line-height: 100%;
 }
@@ -111,3 +92,23 @@ body {
     z-index: 1;
 
 }
+
+@media screen and (max-width: 479px) {
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 22px;
+    }
+
+    #field {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bonus {
+        font-size: 16px;
+        line-height: 100%;
+    }
+  }

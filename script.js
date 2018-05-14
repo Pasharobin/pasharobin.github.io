@@ -355,11 +355,16 @@ function batStop(EO) {
     }
 }
 
-// function startTouch(EO) {
-//     EO = EO || window.event;
+function startTouch(EO) {
+    EO = EO || window.event;
 
-//     EO.preventDefault();
-// }
+    EO.preventDefault();
+    if (game.flag) {
+        speedX = game.ballSpeed;
+        speedY = game.ballSpeed;
+        game.flag = false;
+    }
+}
 
 function moveTouch(EO) {
     EO = EO || window.event;
@@ -368,10 +373,11 @@ function moveTouch(EO) {
     if (event.targetTouches.length == 1) {
         var touch = event.targetTouches[0];
         // var shiftX = Math.round(touch.pageX - bat.offsetLeft);
-        bat.style.left = Math.round(touch.pageX) + bat.offsetWidth/2 + "px";
+        bat.style.left = Math.round(touch.pageX - bat.offsetWidth/2) + "px";
     }
 }
 
+field.addEventListener('touchstart', startTouch, false);
 field.addEventListener('touchmove', moveTouch, false);
 
 window.addEventListener("keydown", batMove, false);
