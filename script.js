@@ -368,7 +368,7 @@ function moveTouch(EO) {
     if (event.targetTouches.length == 1) {
         var touch = event.targetTouches[0];
         // var shiftX = Math.round(touch.pageX - bat.offsetLeft);
-        bat.style.left = Math.round(touch.pageX) + "px";
+        bat.style.left = Math.round(touch.pageX) + bat.offsetWidth/2 + "px";
     }
 }
 
