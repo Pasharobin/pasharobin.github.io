@@ -28,8 +28,7 @@ body {
     height: 24px;
     background-color: red;
     border-radius: 50%;
-    /* transform: translateZ(0); */
-
+    transform: translateZ(0);
 }
 
 #bat {
@@ -40,6 +39,7 @@ body {
     border-radius: 10px;
     top: 96%;
     left: 40%;
+    transform: translateZ(0);
 }
 
 .blocks {
@@ -90,7 +90,16 @@ body {
     opacity: 0;
     transition-duration: 1s;
     z-index: 1;
+    transform: translateZ(0);
+}
 
+#restartbtn {
+    cursor: pointer;
+}
+
+#restartbtn:hover {
+    transform: scale(1.2);
+    transition-duration: 0.5s;
 }
 
 @media screen and (max-width: 479px) {

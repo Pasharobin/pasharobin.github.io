@@ -185,7 +185,6 @@ var game = {
         window.addEventListener("keydown", batMove, false);
         field.addEventListener('touchstart', startTouch, false);
         field.addEventListener('touchmove', moveTouch, false);
-
     },
 
     over: function () {
@@ -197,7 +196,6 @@ var game = {
         window.removeEventListener("keydown", batMove, false);
         field.removeEventListener('touchstart', startTouch, false);
         field.removeEventListener('touchmove', moveTouch, false);
-
     }
 };
 
