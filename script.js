@@ -29,6 +29,7 @@ function sound(link) {
 
 var game = {
     ballSpeed: 7, // скорость шара
+    ballSpeedMob: 5, // скорость шара
     batSpeed: 8, // скорость биты
     lifesCount: 0, // счетчик жизней
     scoreCount: 0, // счетчик очков
@@ -87,6 +88,7 @@ var game = {
                 if (ballPos.x() > blockPos.left() && ballPos.x() < blockPos.right()) {
                     ball.style.top = blockPos.bottom() + "px";
                     blocks[i].style.display = "none";
+                    window.navigator.vibrate(100);
                     this.scoreCounter();
                     bonus.check(blocks[i]);
                     speedY = -speedY;
@@ -96,6 +98,7 @@ var game = {
                 if (ballPos.x() > blockPos.left() && ballPos.x() < blockPos.right()) {
                     ball.style.top = blockPos.top() - ball.offsetHeight + "px";
                     blocks[i].style.display = "none";
+                    window.navigator.vibrate(100);
                     this.scoreCounter();
                     bonus.check(blocks[i]);
                     speedY = -speedY;
@@ -105,6 +108,7 @@ var game = {
                 if (ballPos.left() > blockPos.left() && ballPos.left() < blockPos.right()) {
                     ball.style.left = blockPos.right() + "px";
                     blocks[i].style.display = "none";
+                    window.navigator.vibrate(100);
                     this.scoreCounter();
                     bonus.check(blocks[i]);
                     speedX = -speedX;
@@ -114,6 +118,7 @@ var game = {
                 if (ballPos.right() > blockPos.left() && ballPos.right() < blockPos.right()) {
                     ball.style.left = blockPos.left() - ball.offsetWidth + "px";
                     blocks[i].style.display = "none";
+                    window.navigator.vibrate(100);
                     this.scoreCounter();
                     bonus.check(blocks[i]);
                     speedX = -speedX;
@@ -178,6 +183,9 @@ var game = {
         }
         game.blocksBuilder();
         window.addEventListener("keydown", batMove, false);
+        field.addEventListener('touchstart', startTouch, false);
+        field.addEventListener('touchmove', moveTouch, false);
+
     },
 
     over: function () {
@@ -187,6 +195,9 @@ var game = {
         gameOver.style.top = field.offsetHeight/2 - gameOver.offsetHeight/2 + "px";
         gameOver.style.opacity = "1";
         window.removeEventListener("keydown", batMove, false);
+        field.removeEventListener('touchstart', startTouch, false);
+        field.removeEventListener('touchmove', moveTouch, false);
+
     }
 };
 
@@ -360,8 +371,8 @@ function startTouch(EO) {
 
     EO.preventDefault();
     if (game.flag) {
-        speedX = game.ballSpeed;
-        speedY = game.ballSpeed;
+        speedX = game.ballSpeedMob;
+        speedY = game.ballSpeedMob;
         game.flag = false;
     }
 }
@@ -383,6 +394,7 @@ field.addEventListener('touchmove', moveTouch, false);
 window.addEventListener("keydown", batMove, false);
 window.addEventListener("keyup", batStop, false);
 restart.addEventListener("click", game.restart, false);
+restart.addEventListener('touchend', game.restart, false);
 game.blocksBuilder();
 game.reset();
 RequestAnimationFrame(tick);
