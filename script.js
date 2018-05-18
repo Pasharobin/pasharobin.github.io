@@ -15,6 +15,7 @@ window.msRequestAnimationFrame ||
 function(callback)
     { window.setTimeout(callback, 1000 / 60); }
 ; 
+
 var breakBlock = "sound/breakblock.wav";
 var bonusGood = "sound/bonus+.wav";
 var bonusBad = "sound/bonus-.wav";
@@ -38,9 +39,9 @@ var game = {
     map: [             // карта расположения блоков
         " b b b b b",  // b (block) - простой блок
         "b b b b b ",  // x (x2) - блок удвоения скорости мяча
-        " b b b b b",  // l (long) - блок увеличения ширины биты
+        " b l x s b",  // l (long) - блок увеличения ширины биты
         "b b b b b ",  // s (short) - блок уменьшения ширины биты
-        " b l x s b"], // пробел - блок отсутствует
+        " b b b b b"], // пробел - блок отсутствует
 
     blocksBuilder: function () {
         var h = 3; // расстояние между строками блоков в процентах
@@ -238,7 +239,7 @@ var bonus = {
             }
             bonus.x2Count++;
             if (bonus.x2Count < this.timer) {
-                ball.style.boxShadow = -speedX + "px " + -speedY + "px 15px 3px orange, " + -speedX*2 + "px " + -speedY*2 + "px 12px -5px orange";
+                ball.style.boxShadow = -speedX + "px " + -speedY + "px 15px 3px #f03017, " + -speedX*2 + "px " + -speedY*2 + "px 12px -5px #f03017";
             } else {
                 ball.style.boxShadow = "none";
                 speedX = speedX/1.6;
@@ -298,7 +299,6 @@ var speedY;
 function tick() {
     ball.style.left = Math.round(ballPos.left() + speedX) + "px";
     ball.style.top = Math.round(ballPos.top() + speedY) + "px";
-    // console.log(speedX + " " + speedY);
     bat.style.left = batPos.left() + batSpeed + "px";
     if (batPos.left() < 0) {
         bat.style.left = "0px";
@@ -320,7 +320,6 @@ function tick() {
     if (ballPos.bottom() > field.offsetHeight) {
         ball.style.top = field.offsetHeight - ball.offsetHeight + "px";
         game.lose();
-        // speedY = -speedY; 
     }
     if (ballPos.top() < 0) {
         ball.style.top = "0px";
@@ -381,7 +380,6 @@ function moveTouch(EO) {
     EO.preventDefault();
     if (event.targetTouches.length == 1) {
         var touch = event.targetTouches[0];
-        // var shiftX = Math.round(touch.pageX - bat.offsetLeft);
         bat.style.left = Math.round(touch.pageX - bat.offsetWidth/2) + "px";
     }
 }

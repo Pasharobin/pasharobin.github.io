@@ -17,7 +17,7 @@ body {
     position: relative;
     width: 500px;
     height: 800px;
-    background-color: yellow;
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
     margin: 0 auto;
     overflow: hidden;
 }
@@ -26,20 +26,20 @@ body {
     position: absolute;
     width: 24px;
     height: 24px;
-    background-color: red;
     border-radius: 50%;
     transform: translateZ(0);
+    background: radial-gradient(ellipse at center, rgba(207,222,231,1) 18%,rgba(90,108,114,1) 100%)
 }
 
 #bat {
     position: absolute;
     width: 20%;
     height: 2%;
-    background-color: green;
     border-radius: 10px;
     top: 96%;
     left: 40%;
     transform: translateZ(0);
+    background: linear-gradient(to bottom, rgba(207,226,247,1) 0%,rgba(115,171,231,1) 24%,rgba(10,109,214,1) 50%,rgba(83,152,225,1) 79%,rgba(136,183,234,1) 100%);
 }
 
 .blocks {
@@ -47,7 +47,7 @@ body {
     width: 10%;
     height: 3%;
     border-radius: 8px;
-    background-color: grey;
+    background: linear-gradient(to bottom, rgba(194,71,159,1) 0%, rgba(194,71,159,1) 39%, rgba(168,0,115,1) 77%, rgba(168,0,115,1) 100%);
 }
 
 .bonus {
@@ -57,15 +57,15 @@ body {
 }
 
 #x2 {
-    background-color: green;
+    background: linear-gradient(to bottom, rgba(134,223,131,1) 0%,rgba(70,205,65,1) 20%,rgba(26,152,22,1) 49%,rgba(55,189,51,1) 83%,rgba(85,208,80,1) 100%);
 }
 
 #long {
-    background-color: green;
+    background: linear-gradient(to bottom, rgba(134,223,131,1) 0%,rgba(70,205,65,1) 20%,rgba(26,152,22,1) 49%,rgba(55,189,51,1) 83%,rgba(85,208,80,1) 100%);
 }
 
 #short {
-    background-color: red;
+    background: linear-gradient(to bottom, rgba(255,203,199,1) 0%,rgba(255,104,93,1) 20%,rgba(226,15,0,1) 49%,rgba(255,68,55,1) 83%,rgba(255,126,117,1) 100%);
 }
 
 #score {
@@ -102,7 +102,7 @@ body {
     transition-duration: 0.5s;
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 500px) {
     body {
         margin: 0;
         padding: 0;
